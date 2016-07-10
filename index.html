@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    Material Design
+    </title>
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/customcss.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <body ng-app="materialApp" style="background-color:#374046">
+    <!-- Navigation -->
+    <nav id="myNavbar" class="navbar navbar-inverse" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="fluid-container" style="padding-left:16px;padding-right:16px">
+        <div class="navbar-header">
+          <span class="navbar-brand" style="color:white">See Material</span>
+        </div>
+        <i class="material-icons pull-right" data-toggle="modal" data-target="#myModal" style="font-size: 23px;cursor:pointer">help_outline</i>
+      </div>
+    </nav>
+    <!-- Navigation END-->
+    <div class="fluid-container h100">
+      <!-- Main Row Start -->
+      <div class="h100">
+        <!-- Left Selector Start-->
+        <div class="col-xs-5 h100" ng-controller="SelectorController as selector">
+          <div class="col-xs-3" style="height: 20%; color:white">
+            
+            <button ng-click="selector.randomTheme()" type="button" class="btn btn-default btn-xs">Random</button>
+            <p>P - {{selector.names[selector.hex.indexOf(selector.color.primary)]}}<br/>A - {{selector.names[selector.hex.indexOf(selector.color.accent)]}}</p>
+            
+          </div>
+          <div class="col-xs-3" ng-class="{box: hex!=selector.color.primary && hex!=selector.color.accent, boxActive: hex==selector.color.primary || hex==selector.color.accent}" style="height: 20%;" ng-repeat="hex in selector.hex" ng-click="selector.changeColors(hex)">
+            <div class="inner" style="background: #{{hex}};height: 100%;position: relative;">
+              <span style="color:#FFFFFF;font-weight: bolder;margin:5px;padding: 2px">{{selector.names[$index]}}</span>
+              <p style="position: absolute;  bottom: 0;  right: 16px;font-weight: bolder;color: white;" ng-show="hex==selector.color.primary &&
+              selector.color.primary != selector.color.accent">P</p>
+              <p style="position: absolute;  bottom: 0;  right: 16px;font-weight: bolder;color: white;" ng-show="hex==selector.color.accent && selector.color.primary == selector.color.accent">P + A</p>
+              <p style="position: absolute;  bottom: 0;  right: 16px;font-weight: bolder;color: white;" ng-show="hex==selector.color.accent && selector.color.primary != selector.color.accent">A</p>
+            </div>
+          </div>
+        </div>
+        <!-- Left Selector End -->
+        <!-- Right Panel Start -->
+        <div class="col-xs-7 h100"  ng-controller="PanelController as panel">
+          <div class="col-xs-12 h100" style="height: 100%;">
+            <div class="row" style="height: 70%">
+              <div class="col-xs-6 h100">
+                <div class="mdl-card mdl-shadow--4dp h100" style="width: 90%">
+                  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+                    mdl-layout--fixed-tabs">
+                    <div style="background-color: #{{panel.color.dark}};">
+                      <span style="font-size: 12px;color:white;float: right;padding: 3px">12:00</span>
+                      <i class="material-icons" style="font-size: 15px;color:white;float: right;padding: 3px" >location_on</i>
+                      <i class="material-icons" style="font-size: 15px;color:white;float: right;padding: 3px" >perm_scan_wifi</i>
+                      <i class="material-icons" style="font-size: 15px;color:white;float: left;padding: 3px" >email</i>
+                      <i class="material-icons" style="font-size: 15px;color:white;float: left;padding: 3px" >alarm_on</i>
+                    </div>
+                    <header class="mdl-layout__header" style="background-color:#{{panel.color.primary}}">
+                      <nav>
+                        <div class="nav-wrapper" style="background-color:#{{panel.color.primary}}">
+                          <span style="font-size:20px;color:white;margin-left: 16px">Title</span>
+                        </div>
+                      </nav>
+                      <!-- Tabs -->
+                      <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                        <a href="#fixed-tab-1" style="background-color:#{{panel.color.primary}};white" class="mdl-layout__tab is-active">Tab 1</a>
+                        <a href="#fixed-tab-2" style="background-color:#{{panel.color.primary}};white" class="mdl-layout__tab">Tab 2</a>
+                        <a href="#fixed-tab-3" style="background-color:#{{panel.color.primary}};white" class="mdl-layout__tab">Tab 3</a>
+                      </div>
+                    </header>
+                    <main class="mdl-layout__content">
+                    
+                    <ul class="demo-list-three mdl-list">
+                      <li class="mdl-list__item mdl-list__item--three-line">
+                        <span class="mdl-list__item-primary-content">
+                          <i class="material-icons mdl-list__item-avatar">person</i>
+                          <span style="color:#{{panel.color.primaryText}}">Bryan Cranston</span>
+                          <span style="color:#{{panel.color.secondaryText}}"class="mdl-list__item-text-body">
+                            Bryan Cranston played the role of Walter in Breaking Bad. He is also known
+                            for playing Hal in Malcom in the Middle.
+                          </span>
+                        </span>
+                        <span class="mdl-list__item-secondary-content">
+                          <a class="mdl-list__item-secondary-action" href="#"><i style="color:#{{panel.color.accent}}" class="material-icons">star</i></a>
+                        </span>
+                      </li>
+                      <li class="mdl-list__item mdl-list__item--three-line">
+                        <span class="mdl-list__item-primary-content">
+                          <i class="material-icons  mdl-list__item-avatar">person</i>
+                          <span style="color:#{{panel.color.primaryText}}">Aaron Paul</span>
+                          <span style="color:#{{panel.color.secondaryText}}" class="mdl-list__item-text-body">
+                            Aaron Paul played the role of Jesse in Breaking Bad. He also featured in
+                            the "Need For Speed" Movie.
+                          </span>
+                        </span>
+                        <span class="mdl-list__item-secondary-content">
+                          <a class="mdl-list__item-secondary-action" href="#"><i style="color:#{{panel.color.accent}}" class="material-icons">star</i></a>
+                        </span>
+                      </li>
+                      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fab"
+                      style="color: white;background-color: #{{panel.color.accent}}">
+                      <i class="material-icons">add</i>
+                      </button>
+                    </ul>
+                    </main>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 h100">
+                <div class="mdl-card mdl-shadow--4dp h100" style="width: 90%">
+                  <!-- Simple header with fixed tabs. -->
+                  <div style="background-color: #{{panel.color.dark}};">
+                    <span style="font-size: 12px;color:white;float: right;padding: 3px">12:00</span>
+                    <i class="material-icons" style="font-size: 15px;color:white;float: right;padding: 3px" >location_on</i>
+                    <i class="material-icons" style="font-size: 15px;color:white;float: right;padding: 3px" >perm_scan_wifi</i>
+                    <i class="material-icons" style="font-size: 15px;color:white;float: left;padding: 3px" >email</i>
+                    <i class="material-icons" style="font-size: 15px;color:white;float: left;padding: 3px" >alarm_on</i>
+                  </div>
+                  <!--Materialize -->
+                  <nav>
+                    <div class="nav-wrapper" style="background-color:#{{panel.color.primary}}">
+                      <span style="font-size:20px;margin-left: 16px;color:white">Title</span>
+                    </div>
+                  </nav>
+                  <main class="mdl-layout__content" style="padding: 10px">
+                  <div class="card darken-1">
+                    <div class="card-content black-text">
+                      <span class="card-title">Card Title</span>
+                      <p>Lorem ipsum dolor sit amet, quo vero assentior in, ei sed suas epicurei, ad docendi sensibus duo. No sit dico aliquid patrioque. </p>
+                      
+                    </div>
+                    
+                  </div>
+                  <a class="waves-effect waves-light btn" style="background-color: #{{panel.color.accent}};color: white;float: right;margin-right: 16px"><i class="material-icons right">cloud</i>button</a>
+                  </main>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="height:30%;">
+              <color-panel color="{{panel.color.primary}}" color-name="Primary" font-color="white"></color-panel>
+              <color-panel color="{{panel.color.accent}}" color-name="Accent" font-color="white"></color-panel>
+              <color-panel color="{{panel.color.dark}}" color-name="Primary Dark" font-color="white"></color-panel>
+              <color-panel color="{{panel.color.lightPrimary}}" color-name="Primary Light" font-color="black"></color-panel>
+              <color-panel color="{{panel.color.txt}}" color-name="Icon/Text" font-color="{{panel.color.txt==='212121' ? 'white' : 'black'}}"></color-panel>
+              <color-panel color="{{panel.color.primaryText}}" color-name="Primary Text" font-color="white"></color-panel>
+              <color-panel color="{{panel.color.secondaryText}}" color-name="Secondary Text" font-color="white"></color-panel>
+              <color-panel color="{{panel.color.divider}}" color-name="Divider" font-color="white"></color-panel>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <!-- Right Panel End -->
+    </div>
+    <!-- Main Row End -->
+  </div>
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h5 class="modal-title">Instructions</h5>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- *************** JS Section ****************** -->
+  <!--Include Jquery -->
+  <script src="js/jquery-1.9.0.min.js"></script>
+  <!-- <script src="js/jquery-ui.js"></script> -->
+  <!--Include Material -->
+  <script src="js/material.min.js"></script>
+  <!--Include Angular -->
+  <script src="js/angular.min.js"></script>
+  <!--Include Custom JS -->
+  <script src="js/custom.js"></script>
+  <!--Include Clipboard -->
+  <script src="js/clipboard.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!--Initiate Clipboard -->
+  <script>
+  var clipboard = new Clipboard('color-panel > .box');
+  clipboard.on('success', function(e) {
+  console.log(e);
+  });
+  
+  clipboard.on('error', function(e) {
+  console.log(e);
+  });
+  
+  </script>
+  
+</body>
+</html>

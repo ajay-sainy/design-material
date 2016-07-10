@@ -1,0 +1,48 @@
+html, body{
+    height: 100%;
+    padding-bottom: 35px;
+}
+
+.box {
+    padding: 1px;
+}
+
+.fab {
+	position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 16px;
+    margin-right: 16px;
+}
+
+.color-panel .box {
+	border-right: 1px solid;
+    border-bottom: 1px solid;    
+}
+
+.box:hover {
+    padding: 3px;    
+    box-sizing: border-box;
+}
+
+.boxActive {
+	padding: 4px;    
+    box-sizing: border-box;	
+}
+
+.h100 {
+    height: 100%;
+}
+
+.h70 {
+    height: 70%;
+}
+
+.h30 {
+    height: 30%;
+}
+
+.navbar {
+    height: 40px
+    
+}
