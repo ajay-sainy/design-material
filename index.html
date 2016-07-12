@@ -7,8 +7,7 @@
     </title>
     <link rel="stylesheet" href="css/material.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/customcss.css">
-    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/customcss.css">    
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body ng-app="materialApp" style="background-color:#374046">
@@ -30,7 +29,7 @@
         <div class="col-xs-5 h100" ng-controller="SelectorController as selector">
           <div class="col-xs-3" style="height: 20%; color:white">
             
-            <button ng-click="selector.randomTheme()" type="button" class="btn btn-default btn-xs">Random</button>
+            <button ng-click="selector.randomTheme()" type="button" class="mdl-button mdl-js-button mdl-button--raised" style="background-color:orange;color:white">Random</button>
             <p>P - {{selector.names[selector.hex.indexOf(selector.color.primary)]}}<br/>A - {{selector.names[selector.hex.indexOf(selector.color.accent)]}}</p>
             
           </div>
@@ -48,9 +47,9 @@
         <!-- Right Panel Start -->
         <div class="col-xs-7 h100"  ng-controller="PanelController as panel">
           <div class="col-xs-12 h100" style="height: 100%;">
-            <div class="row" style="height: 70%">
+            <div class="row" style="height: 70%;padding-bottom:16px">
               <div class="col-xs-6 h100">
-                <div class="mdl-card mdl-shadow--4dp h100" style="width: 90%">
+                <div class="mdl-card mdl-shadow--4dp h100">
                   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
                     mdl-layout--fixed-tabs">
                     <div style="background-color: #{{panel.color.dark}};">
@@ -61,11 +60,9 @@
                       <i class="material-icons" style="font-size: 15px;color:white;float: left;padding: 3px" >alarm_on</i>
                     </div>
                     <header class="mdl-layout__header" style="background-color:#{{panel.color.primary}}">
-                      <nav>
-                        <div class="nav-wrapper" style="background-color:#{{panel.color.primary}}">
-                          <span style="font-size:20px;color:white;margin-left: 16px">Title</span>
-                        </div>
-                      </nav>
+                      <div class="mdl-layout__header-row"  style="padding:16px"  >
+                        <span class="mdl-layout-title">Title</span>
+                      </div>
                       <!-- Tabs -->
                       <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
                         <a href="#fixed-tab-1" style="background-color:#{{panel.color.primary}};white" class="mdl-layout__tab is-active">Tab 1</a>
@@ -112,7 +109,7 @@
                 </div>
               </div>
               <div class="col-xs-6 h100">
-                <div class="mdl-card mdl-shadow--4dp h100" style="width: 90%">
+                <div class="mdl-card mdl-shadow--4dp h100">
                   <!-- Simple header with fixed tabs. -->
                   <div style="background-color: #{{panel.color.dark}};">
                     <span style="font-size: 12px;color:white;float: right;padding: 3px">12:00</span>
@@ -121,22 +118,27 @@
                     <i class="material-icons" style="font-size: 15px;color:white;float: left;padding: 3px" >email</i>
                     <i class="material-icons" style="font-size: 15px;color:white;float: left;padding: 3px" >alarm_on</i>
                   </div>
-                  <!--Materialize -->
-                  <nav>
-                    <div class="nav-wrapper" style="background-color:#{{panel.color.primary}}">
-                      <span style="font-size:20px;margin-left: 16px;color:white">Title</span>
+                  
+                  <header class="mdl-layout__header" style="background-color:#{{panel.color.primary}}">
+                    <div class="mdl-layout__header-row"  style="padding:16px"  >
+                      <span class="mdl-layout-title">Title</span>
                     </div>
-                  </nav>
-                  <main class="mdl-layout__content" style="padding: 10px">
-                  <div class="card darken-1">
-                    <div class="card-content black-text">
-                      <span class="card-title">Card Title</span>
-                      <p>Lorem ipsum dolor sit amet, quo vero assentior in, ei sed suas epicurei, ad docendi sensibus duo. No sit dico aliquid patrioque. </p>
-                      
+                  </header>
+                  <main class="mdl-layout__content" style="padding: 16px">
+                  <div class="mdl-card mdl-shadow--4dp" style="width:100%">
+                    <div class="mdl-card__title">
+                      <h4>Card Title</h4>
                     </div>
                     
+                    <p style="padding:16px">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
                   </div>
-                  <a class="waves-effect waves-light btn" style="background-color: #{{panel.color.accent}};color: white;float: right;margin-right: 16px"><i class="material-icons right">cloud</i>button</a>
+                  <!-- Accent-colored raised button -->
+                  <button class="mdl-button mdl-js-button mdl-button--raised" style="color:white;background-color:#{{panel.color.accent}};float:right;margin:16px">
+                  Button
+                  </button>
+                  
                   </main>
                 </div>
               </div>
@@ -206,11 +208,9 @@
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
   ga('create', 'UA-80475171-2', 'auto');
   ga('send', 'pageview');
-
-</script>
+  </script>
   
 </body>
 </html>
